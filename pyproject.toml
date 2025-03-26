@@ -1,0 +1,48 @@
+# Common Configuration for tools
+
+[tool.black]
+line-length = 120
+
+[tool.mypy]
+exclude = "(?x)(venv|docs|tmp|examples)"
+mypy_path = "./src"
+explicit_package_bases = "true"
+
+[tool.ruff]
+exclude = ["__init__.py", "docs", "tmp"]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+py_version=39
+src_paths = ["src"]
+skip = ["__init__.py"]
+skip_glob = ["**/.venv/*", "**/venv/*", "**/docs/*", "**/stubs/*"]
+
+[tool.poetry]
+name = "awesome-multi-agent"
+version = "0.1.0"
+description = "A multi-agent system for handling complex computations"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+parse = "^1.20.0"
+python-dotenv = "^1.0.0"
+pydantic = "^2.8.0"
+theoriq = {extras = ["flask"], git = "ssh://git@github.com/chain-ml/theoriq-agent-sdk.git"}
+pyyaml = "^6.0.2"
+gunicorn = "^21.2.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+ruff = "^0.3.0"
+mypy = "^1.9.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"

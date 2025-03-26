@@ -1,0 +1,17 @@
+{
+  "configuration": {
+    "deployment": {
+      "headers": [],
+      "url": "http://74.96.246.27:8888/deployed"
+    }
+  },
+  "metadata": {
+    "costCard": "Cost is based on the result of the multiplication",
+    "examplePrompts": ["2 * 3", "4 * 5 * 6"],
+    "imageUrl": "https://i.pravatar.cc/48?u=118836",
+    "longDescription": "This agent takes numbers as input and multiplies them together. It can handle multiple numbers in a single request and supports configuration for prefix and offset. The agent can process sequential multiplications and returns both the result and a Python function showing the calculation.",
+    "name": "Awesome Multiplication Agent",
+    "shortDescription": "An agent that performs multiplication operations",
+    "tags": ["Math", "Multiplication", "Calculator"]
+  }
+}

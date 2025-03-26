@@ -1,0 +1,46 @@
+# Vars are defined in http-client.env.json and http-client.private.env.json
+@agent_host={{host}}/deployed
+@agent_id={{deployd_id}}
+
+### Register the deployed agent on the theoriq protocol
+POST {{theoriq_host}}/api/v1alpha2/agents
+Authorization: Bearer {{biscuit}}
+Content-Type: application/json
+
+{
+  "metadata": {
+    "name": "Awesome Multiplication Deployed",
+    "shortDescription": "Awesome Multiplication Deployed",
+    "longDescription": "Awesome Multiplication",
+    "tags": [
+      "Math"
+    ],
+    "examplePrompts": [
+      "2 * 3",
+      "4 * 5 * 6"
+    ]
+  },
+  "configuration": {
+    "deployment": {
+      "url": "{{agent_host}}",
+      "headers": []
+    }
+  }
+}
+
+
+### Configuration Schema
+GET {{agent_host}}/api/v1alpha2/configuration/schema
+
+### PublicKey
+GET {{agent_host}}/api/v1alpha2/system/public-key
+
+### Agent Metadata
+GET {{agent_host}}/api/v1alpha2/system/agent
+
+### Liveness
+GET {{agent_host}}/api/v1alpha2/system/livez
+
+### Delete
+DELETE {{theoriq_host}}/api/v1alpha2/agents/{{agent_id}}
+Authorization: Bearer {{biscuit}}

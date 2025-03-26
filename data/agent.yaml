@@ -1,0 +1,18 @@
+name: AwesomeMultiplication
+version: 1.0.1
+description:
+  short: A simple agent that computes multiplication
+  long: An awesome Agent that computes multiplication of numbers
+  tags:
+    - Math
+    - Calculator
+  examples:
+    - "2 * 3"
+    - "4 * 5 * 6"
+schema:
+  type: object
+  properties:
+    prefix:
+      type: string
+    offset:
+      type: integer

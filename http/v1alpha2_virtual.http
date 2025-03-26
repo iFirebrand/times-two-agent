@@ -1,0 +1,56 @@
+# Vars are defined in http-client.env.json and http-client.private.env.json
+@agent_id=changeme
+@base_agent_id={{configurable_id}}
+
+### Register virtual/configured agent
+POST {{theoriq_host}}/api/v1alpha2/agents
+Authorization: Bearer {{biscuit}}
+Content-Type: application/json
+
+{
+  "metadata": {
+    "name": "Awesome Multiplication With 101 offset",
+    "shortDescription": "Awesome Multiplication with offset",
+    "longDescription": "Awesome Multiplication",
+    "tags": [
+      "Math"
+    ],
+    "costCard": "Cost card",
+    "examplePrompts": [
+      "2 * 3",
+      "4 * 5 * 6"
+    ]
+  },
+  "configuration": {
+    "virtual": {
+      "agentId": "{{base_agent_id}}",
+      "configuration": {
+        "offset": 101,
+        "prefix": "Ohhh"
+      }
+    }
+  }
+}
+
+### Patch
+PATCH {{theoriq_host}}/api/v1alpha2/agents/{{agent_id}}
+Authorization: Bearer {{biscuit}}
+Content-Type: application/json
+
+{
+  "metadata": {
+    "name": "Awesome Multiplication With 102 offset"
+  },
+  "configuration": {
+    "virtual": {
+      "configuration": {
+        "offset": 102,
+        "prefix": "Boo!"
+      }
+    }
+  }
+}
+
+### Configure
+POST {{theoriq_host}}/api/v1alpha2/agents/{{agent_id}}/configure
+Authorization: Bearer {{biscuit}}
