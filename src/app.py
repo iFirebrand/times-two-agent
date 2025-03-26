@@ -17,12 +17,7 @@ def create_app():
     # Enable CORS
     CORS(app, resources={
         r"/*": {
-            "origins": [
-                "https://infinity.dev.theoriq.ai",
-                "https://infinity.theoriq.ai",
-                "http://infinity.dev.theoriq.ai",
-                "http://infinity.theoriq.ai"
-            ],
+            "origins": ["*"],  # Allow all origins during development
             "methods": ["GET", "POST", "OPTIONS"],
             "allow_headers": ["Content-Type", "Authorization"]
         }
